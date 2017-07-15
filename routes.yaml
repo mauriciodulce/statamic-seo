@@ -1,0 +1,10 @@
+routes:
+  /:
+    uses: index
+    as: seo.index
+  /{page}:
+    uses: show
+    as: seo.show
+  post@settings:
+    as: seo.settings
+    uses: saveSettings

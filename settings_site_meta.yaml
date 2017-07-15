@@ -1,0 +1,63 @@
+fields:
+  site_seo_name:
+    display: Site SEO Name
+    instructions: This field is used wherever the name of the site is referenced, both at the trailing end of the `<title>` tag, and in other meta tags on the site.
+    type: text
+  site_seo_title:
+    display: Site SEO Title
+    instructions: The [SEO Title](http://blog.woorank.com/2014/07/15-title-tag-optimization-guidelines-usability-seo/) should be between 10 and 70 characters (spaces included). Make sure your title tag is explicit and contains your most important keywords.
+    type: text
+  site_seo_name_placement:
+    instructions: Where the Site SEO Name is placed relative to the Title in the `<title>` tag
+    type: select
+    options:
+      before: Before
+      after: After
+      none: None
+    width: 50
+  site_seo_name_seperator:
+    instructions: The character that should be used to separate the Site SEO Name and Title in the `<title>` tag
+    type: text
+    width: 50
+  site_seo_description:
+    instructions: The [SEO Description](http://blog.woorank.com/2013/03/the-importance-of-meta-descriptions/) should be between 70 and 160 characters (spaces included). Meta descriptions allow you to influence how your web pages are described and displayed in search results. Ensure that all of your web pages have a unique meta description that is explicit and contains your most important keywords.
+    type: textarea
+    rows: 2
+  site_seo_keywords:
+    instructions: Google ignores the [SEO Keywords tag]("http://blog.woorank.com/2014/06/meta-element-a-beguiners-guide/#metakeyword"); though other search engines do look at it. Utilize it carefully, as improper or spammy use most likely will hurt you, or even have your site marked as spam. Avoid overstuffing the keywords and do not include keywords that are not related to the specific page you place them on.
+    type: tags
+  site_seo_image:
+    instructions: This is the image that will be used for display as the global website brand, as well as on Twitter Cards and Facebook OpenGraph that link to the website, if they are not specified. The image must be in JPG, PNG, or GIF format.
+    type: assets
+    max_files: 1
+    container: images
+  site_twitter_card_type:
+    instructions: With Twitter Cards, you can attach rich photos and information to Tweets that drive traffic to your website. Users who Tweet links to your content will have a “Card” added to the Tweet that’s visible to all of their followers.
+    type: select
+    options:
+      summary: Summary Card
+      summery_image: Summary Card with Large Image
+  site_twitter_card_image:
+    instructions: This is the image that will be used for display on Twitter Cards in tweets that link to the website. If no image is specified here, the Site SEO Image will be used for Twitter Cards instead. The image must be in JPG, PNG, or GIF format.
+    type: assets
+    max_files: 1
+    container: images
+  site_facebook_open_graph_type:
+    instructions: Adding OpenGraph tags to your website influences the performance of your links on social media by allowing you to control what appears when a user posts a link to your content on Facebook.
+    type: select
+    options:
+      website: Website
+      article: Article
+  site_facebook_open_graph_image:
+    instructions: This is the image that will be used for display on Facebook posts that link to the website. If no image is specified here, the Site SEO Image will be used for Facebook posts instead. The image must be in JPG, PNG, or GIF format.
+    type: assets
+    max_files: 1
+    container: images
+  site_robots_meta_tag:
+    instructions: The robots meta tag lets you utilize a granular, page-specific approach to controlling how an individual page should be indexed and served to users in search results.
+    type: select
+    options:
+      all: all - Index this page and follow links (default)
+      noindex: noindex - Do not index this page
+      nofollow: nofollow - Do not follow links on this page
+      none: none - Do not index or follow links on this page

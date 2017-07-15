@@ -1,0 +1,752 @@
+<title>{{ if site_seo_name_placement == "before" }}{{ site_seo_name }}{{ if content.seo_title or content.title or site_seo_title }} {{ site_seo_name_seperator }} {{ /if }}{{ /if }}{{ content.seo_title or content.title or site_seo_title }}{{ if site_seo_name_placement == "after" }}{{ if content.seo_title or content.title or site_seo_title }} {{ site_seo_name_seperator }} {{ /if }}{{ site_seo_name }}{{ /if }}</title>
+
+<!-- Meta -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="referrer" content="always" />
+{{ if site_robots_meta_tag }}
+<meta name="robots" content="{{ site_robots_meta_tag }}" />
+{{ /if }}
+{{ if site_seo_keywords }}
+<meta name="keywords" content="{{ site_seo_keywords | join }}" />
+{{ /if }}
+{{ if content.seo_description or content.description or site_seo_description }}
+<meta name="description" content="{{ content.seo_description or content.description or site_seo_description }}" />
+{{ /if }}
+<meta name="generator" content="Statamic" />
+{{ if entity_region }}
+<meta name="geo.region" content="{{ entity_region }}" />
+{{ /if }}
+{{ if entity_latitude }}
+<meta name="geo.position" content="{{ entity_latitude }},{{ entity_longitude }}" />
+<meta name="ICBM" content="{{ entity_latitude }},{{ entity_longitude }}" />
+{{ /if }}
+{{ if entity_locality }}
+<meta name="geo.placename" content="{{ entity_locality }}" />
+{{ /if }}
+
+<!-- Facebook -->
+{{ if facebook_profile_id }}
+<meta property="fb:profile_id" content="{{ facebook_profile_id }}" />
+{{ /if }}
+{{ if facebook_app_id }}
+<meta property="fb:app_id" content="{{ facebook_app_id }}" />
+{{ /if }}
+{{ if site_facebook_open_graph_type }}
+<meta property="og:type" content="{{ site_facebook_open_graph_type }}" />
+{{ /if }}
+{{ if locale }}
+<meta property="og:locale" content="{{ locale }}" />
+{{ /if }}
+{{ if content.url }}
+<meta property="og:url" content="{{ path src=content.url }}" />
+{{ /if }}
+{{ if content.seo_title or content.title or site_seo_title }}
+<meta property="og:title" content="{{ content.seo_title or content.title or site_seo_title }}" />
+{{ /if }}
+{{ if content.seo_description or content.description or site_seo_description }}
+<meta property="og:description" content="{{ content.seo_description or content.description or site_seo_description }}" />
+{{ /if }}
+{{ if content.seo_image | seo:is_array }}
+{{ content.seo_image }}
+<meta property="og:image" content="{{ path src=value }}" />
+{{ /content.seo_image }}
+{{ elseif content.seo_image }}
+<meta name="twitter:image" content="{{ path src=content.seo_image }}">
+{{ elseif site_facebook_open_graph_image }}
+<meta property="og:image" content="{{ path src=site_facebook_open_graph_image }}" />
+{{ /if }}
+{{ if site_seo_name }}
+<meta property="og:site_name" content="{{ site_seo_name }}" />
+{{ /if }}
+{{ if googleplus_handle }}
+<meta property="og:see_also" content="https://plus.google.com/{{ googleplus_handle }}" />
+{{ /if }}
+
+<!-- Twitter -->
+{{ if site_twitter_card_type }}
+<meta name="twitter:card" content="{{ site_twitter_card_type }}">
+{{ /if }}
+{{ if content.url }}
+<meta name="twitter:url" content="{{ path src=content.url }}">
+{{ /if }}
+{{ if content.seo_title or content.title or site_seo_title }}
+<meta name="twitter:title" content="{{ content.seo_title or content.title or site_seo_title }}">
+{{ /if }}
+{{ if content.seo_description or content.description or site_seo_description }}
+<meta name="twitter:description" content="{{ content.seo_description or content.description or site_seo_description }}">
+{{ /if }}
+{{ if content.seo_image | seo:is_array }}
+{{ content.seo_image }}
+<meta name="twitter:image" content="{{ path src=value }}">
+{{ /content.seo_image }}
+{{ elseif content.seo_image }}
+<meta name="twitter:image" content="{{ path src=content.seo_image }}">
+{{ elseif site_twitter_card_image }}
+<meta name="twitter:image" content="{{ path src=site_twitter_card_image }}">
+{{ /if }}
+
+<!-- Google+ -->
+{{ if googleplus_handle }}
+<link rel="publisher" href="https://plus.google.com/{{ googleplus_handle }}" />
+{{ /if }}
+
+<!-- Humans.txt -->
+<link type="text/plain" rel="author" href="/humans.txt" />
+
+<!-- Verification -->
+{{ if google_site_verification }}
+<meta name="google-site-verification" content="{{ google_site_verification }}" />
+{{ /if }}
+{{ if bing_site_verification }}
+<meta name="msvalidate.01" content="{{ bing_site_verification }}" />
+{{ /if }}
+
+<!-- Identity -->
+{{ if site_owner_entity_type }}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "{{ site_owner_entity_type }}",
+    "name": "{{ entity_name }}",
+    "description": "{{ entity_description }}",
+    "url": "{{ entity_url }}",
+    "sameAs": [
+        {{ if twitter_handle }}
+        "https://twitter.com/{{ twitter_handle }}",
+        {{ /if }}
+        {{ if facebook_handle }}
+        "https://facebook.com/{{ facebook_handle }}",
+        {{ /if }}
+        {{ if facebook_profile_id }}
+        "https://facebook.com/{{ facebook_profile_id }}",
+        {{ /if }}
+        {{ if wikipedia_url }}
+        "{{ wikipedia_url }}",
+        {{ /if }}
+        {{ if linkedin_handle }}
+        "https://linkedin.com/in/{{ linkedin_handle }}",
+        {{ /if }}
+        {{ if googleplus_handle }}
+        "https://plus.google.com/{{ googleplus_handle }}",
+        {{ /if }}
+        {{ if youtube_user_handle }}
+        "https://youtube.com/{{ youtube_user_handle }}",
+        {{ /if }}
+        {{ if youtube_channel_handle }}
+        "https://youtube.com/{{ youtube_channel_handle }}",
+        {{ /if }}
+        {{ if instagram_handle }}
+        "https://instagram.com/{{ instagram_handle }}",
+        {{ /if }}
+        {{ if pinterest_handle }}
+        "https://pinterest.com/{{ pinterest_handle }}",
+        {{ /if }}
+        {{ if github_handle }}
+        "https://github.com/{{ github_handle }}",
+        {{ /if }}
+        {{ if vimeo_handle }}
+        "https://vimeo.com/{{ vimeo_handle }}",
+        {{ /if }}
+        ""
+    ],
+    {{ if site_seo_image }}
+    "image": {
+        "@type": "ImageObject",
+        "url": "{{ path src=site_seo_image }}"
+    },
+    {{ /if }}
+    {{ if entity_telephone }}
+    "telephone": "{{ entity_telephone }}",
+    {{ /if }}
+    {{ if entity_email }}
+    "email": "{{ entity_email }}",
+    {{ /if }}
+    {{ if entity_street_address }}
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ entity_street_address }}",
+        "addressLocality": "{{ entity_locality }}",
+        "addressRegion": "{{  entity_region }}",
+        "postalCode": "{{ entity_postal_code }}",
+        "addressCountry": "{{ entity_country }}"
+    },
+    {{ /if }}
+    {{ if entity_brand }}
+    "logo": {
+        "@type": "ImageObject",
+        "url": "{{ path src=entity_brand }}"
+    },
+    {{ /if }}
+    "location": {
+        "@type": "Place",
+        "name": "{{ entity_name }}",
+        "description": "{{ entity_description }}",
+        "hasMap": "http://maps.google.com/maps?q={{ entity_name | urlencode }}%2C+{{ entity_street_address | urlencode }}%2C+{{ entity_locality | urlencode }}%2C+{{ entity_region | urlencode }}+{{ entity_postal_code | urlencode }}%2C+{{ entity_country | urlencode }}",
+        {{ if entity_telephone }}
+        "telephone": "{{ entity_telephone }}",
+        {{ /if }}
+        {{ if entity_brand }}
+        "image": {
+            "@type": "ImageObject",
+            "url": "{{ path src=entity_brand }}"
+        },
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ path src=entity_brand }}"
+        },
+        {{ /if }}
+        {{ if entity_url }}
+        "url": "{{ entity_url }}",
+        {{ /if }}
+        "sameAs": [
+            {{ if twitter_handle }}
+            "https://twitter.com/{{ twitter_handle }}",
+            {{ /if }}
+            {{ if facebook_handle }}
+            "https://facebook.com/{{ facebook_handle }}",
+            {{ /if }}
+            {{ if facebook_profile_id }}
+            "https://facebook.com/{{ facebook_profile_id }}",
+            {{ /if }}
+            {{ if wikipedia_url }}
+            "{{ wikipedia_url }}",
+            {{ /if }}
+            {{ if linkedin_handle }}
+            "https://linkedin.com/in/{{ linkedin_handle }}",
+            {{ /if }}
+            {{ if googleplus_handle }}
+            "https://plus.google.com/{{ googleplus_handle }}",
+            {{ /if }}
+            {{ if youtube_user_handle }}
+            "https://youtube.com/{{ youtube_user_handle }}",
+            {{ /if }}
+            {{ if youtube_channel_handle }}
+            "https://youtube.com/{{ youtube_channel_handle }}",
+            {{ /if }}
+            {{ if instagram_handle }}
+            "https://instagram.com/{{ instagram_handle }}",
+            {{ /if }}
+            {{ if pinterest_handle }}
+            "https://pinterest.com/{{ pinterest_handle }}",
+            {{ /if }}
+            {{ if github_handle }}
+            "https://github.com/{{ github_handle }}",
+            {{ /if }}
+            {{ if vimeo_handle }}
+            "https://vimeo.com/{{ vimeo_handle }}",
+            {{ /if }}
+            ""
+        ],
+        {{ if entity_latitude and entity_longitude }}
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "{{ entity_latitude }}",
+            "longitude": "{{ entity_longitude }}"
+        },
+        {{ /if }}
+        {{ if entity_street_address }}
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ entity_street_address }}",
+            "addressLocality": "{{ entity_locality }}",
+            "addressRegion": "{{ entity_region }}",
+            "postalCode": "{{ entity_postal_code }}",
+            "addressCountry": "{{ entity_country }}"
+        }
+        {{ /if }}
+    }
+}
+</script>
+
+<!-- WebSite -->
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "{{ entity_name }}",
+    "description": "{{ entity_description }}",
+    "url": "{{ entity_url }}",
+    {{ if entity_brand }}
+    "image": "{{ path src=entity_brand }}",
+    {{ /if }}
+    "sameAs": [
+        {{ if twitter_handle }}
+        "https://twitter.com/{{ twitter_handle }}",
+        {{ /if }}
+        {{ if facebook_handle }}
+        "https://facebook.com/{{ facebook_handle }}",
+        {{ /if }}
+        {{ if facebook_profile_id }}
+        "https://facebook.com/{{ facebook_profile_id }}",
+        {{ /if }}
+        {{ if wikipedia_url }}
+        "{{ wikipedia_url }}",
+        {{ /if }}
+        {{ if linkedin_handle }}
+        "https://linkedin.com/in/{{ linkedin_handle }}",
+        {{ /if }}
+        {{ if googleplus_handle }}
+        "https://plus.google.com/{{ googleplus_handle }}",
+        {{ /if }}
+        {{ if youtube_user_handle }}
+        "https://youtube.com/{{ youtube_user_handle }}",
+        {{ /if }}
+        {{ if youtube_channel_handle }}
+        "https://youtube.com/{{ youtube_channel_handle }}",
+        {{ /if }}
+        {{ if instagram_handle }}
+        "https://instagram.com/{{ instagram_handle }}",
+        {{ /if }}
+        {{ if pinterest_handle }}
+        "https://pinterest.com/{{ pinterest_handle }}",
+        {{ /if }}
+        {{ if github_handle }}
+        "https://github.com/{{ github_handle }}",
+        {{ /if }}
+        {{ if vimeo_handle }}
+        "https://vimeo.com/{{ vimeo_handle }}",
+        {{ /if }}
+        ""
+    ],
+    "copyrightHolder": {
+        "@type": "{{ site_owner_entity_type }}",
+        "name": "{{ entity_name }}",
+        "description": "{{ entity_description }}",
+        "url": "{{ entity_url }}",
+        "sameAs": [
+            {{ if twitter_handle }}
+            "https://twitter.com/{{ twitter_handle }}",
+            {{ /if }}
+            {{ if facebook_handle }}
+            "https://facebook.com/{{ facebook_handle }}",
+            {{ /if }}
+            {{ if facebook_profile_id }}
+            "https://facebook.com/{{ facebook_profile_id }}",
+            {{ /if }}
+            {{ if wikipedia_url }}
+            "{{ wikipedia_url }}",
+            {{ /if }}
+            {{ if linkedin_handle }}
+            "https://linkedin.com/in/{{ linkedin_handle }}",
+            {{ /if }}
+            {{ if googleplus_handle }}
+            "https://plus.google.com/{{ googleplus_handle }}",
+            {{ /if }}
+            {{ if youtube_user_handle }}
+            "https://youtube.com/{{ youtube_user_handle }}",
+            {{ /if }}
+            {{ if youtube_channel_handle }}
+            "https://youtube.com/{{ youtube_channel_handle }}",
+            {{ /if }}
+            {{ if instagram_handle }}
+            "https://instagram.com/{{ instagram_handle }}",
+            {{ /if }}
+            {{ if pinterest_handle }}
+            "https://pinterest.com/{{ pinterest_handle }}",
+            {{ /if }}
+            {{ if github_handle }}
+            "https://github.com/{{ github_handle }}",
+            {{ /if }}
+            {{ if vimeo_handle }}
+            "https://vimeo.com/{{ vimeo_handle }}",
+            {{ /if }}
+            ""
+        ],
+        {{ if entity_brand }}
+        "image": {
+            "@type": "ImageObject",
+            "url": "{{ path src=entity_brand }}"
+        },
+        {{ /if }}
+        {{ if entity_telephone }}
+        "telephone": "{{ entity_telephone }}",
+        {{ /if }}
+        {{ if entity_email }}
+        "email": "{{ entity_email }}",
+        {{ /if }}
+        {{ if entity_street_address }}
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ entity_street_address }}",
+            "addressLocality": "{{ entity_locality }}",
+            "addressRegion": "{{ entity_region }}",
+            "postalCode": "{{ entity_postal_code }}",
+            "addressCountry": "{{ entity_country }}"
+        },
+        {{ /if }}
+        {{ if entity_brand }}
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ path src=entity_brand }}"
+        },
+        {{ /if }}
+        "location": {
+            "@type": "Place",
+            "name": "{{ entity_name }}",
+            "description": "{{ entity_description }}",
+            "hasMap": "http://maps.google.com/maps?q={{ entity_name | urlencode }}%2C+{{ entity_street_address | urlencode }}%2C+{{ entity_locality }}%2C+{{ entity_region }}+{{ entity_postal_code }}%2C+{{ entity_country }}",
+            {{ if entity_telephone }}
+            "telephone": "{{ entity_telephone }}",
+            {{ /if }}
+            {{ if entity_brand }}
+            "image": {
+                "@type": "ImageObject",
+                "url": "{{ path src=entity_brand }}"
+            },
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ path src=entity_brand }}"
+            },
+            {{ /if }}
+            {{ if entity_url }}
+            "url": "{{ entity_url }}",
+            {{ /if }}
+            "sameAs": [
+                {{ if twitter_handle }}
+                "https://twitter.com/{{ twitter_handle }}",
+                {{ /if }}
+                {{ if facebook_handle }}
+                "https://facebook.com/{{ facebook_handle }}",
+                {{ /if }}
+                {{ if facebook_profile_id }}
+                "https://facebook.com/{{ facebook_profile_id }}",
+                {{ /if }}
+                {{ if wikipedia_url }}
+                "{{ wikipedia_url }}",
+                {{ /if }}
+                {{ if linkedin_handle }}
+                "https://linkedin.com/in/{{ linkedin_handle }}",
+                {{ /if }}
+                {{ if googleplus_handle }}
+                "https://plus.google.com/{{ googleplus_handle }}",
+                {{ /if }}
+                {{ if youtube_user_handle }}
+                "https://youtube.com/{{ youtube_user_handle }}",
+                {{ /if }}
+                {{ if youtube_channel_handle }}
+                "https://youtube.com/{{ youtube_channel_handle }}",
+                {{ /if }}
+                {{ if instagram_handle }}
+                "https://instagram.com/{{ instagram_handle }}",
+                {{ /if }}
+                {{ if pinterest_handle }}
+                "https://pinterest.com/{{ pinterest_handle }}",
+                {{ /if }}
+                {{ if github_handle }}
+                "https://github.com/{{ github_handle }}",
+                {{ /if }}
+                {{ if vimeo_handle }}
+                "https://vimeo.com/{{ vimeo_handle }}",
+                {{ /if }}
+                ""
+            ],
+            {{ if entity_latitude and entity_longitude }}
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "{{ entity_latitude }}",
+                "longitude": "{{ entity_longitude }}"
+            },
+            {{ /if }}
+            {{ if entity_street_address }}
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "{{ entity_street_address }}",
+                "addressLocality": "{{ entity_locality }}",
+                "addressRegion": "{{ entity_region }}",
+                "postalCode": "{{ entity_postal_code }}",
+                "addressCountry": "{{ entity_country }}"
+            }
+            {{ /if }}
+        }
+    },
+    "author": {
+        "@type": "{{ site_owner_entity_type }}",
+        "name": "{{ entity_name }}",
+        "description": "{{ entity_description }}",
+        {{ if entity_url }}
+        "url": "{{ entity_url }}",
+        {{ /if }}
+        "sameAs": [
+            {{ if twitter_handle }}
+            "https://twitter.com/{{ twitter_handle }}",
+            {{ /if }}
+            {{ if facebook_handle }}
+            "https://facebook.com/{{ facebook_handle }}",
+            {{ /if }}
+            {{ if facebook_profile_id }}
+            "https://facebook.com/{{ facebook_profile_id }}",
+            {{ /if }}
+            {{ if wikipedia_url }}
+            "{{ wikipedia_url }}",
+            {{ /if }}
+            {{ if linkedin_handle }}
+            "https://linkedin.com/in/{{ linkedin_handle }}",
+            {{ /if }}
+            {{ if googleplus_handle }}
+            "https://plus.google.com/{{ googleplus_handle }}",
+            {{ /if }}
+            {{ if youtube_user_handle }}
+            "https://youtube.com/{{ youtube_user_handle }}",
+            {{ /if }}
+            {{ if youtube_channel_handle }}
+            "https://youtube.com/{{ youtube_channel_handle }}",
+            {{ /if }}
+            {{ if instagram_handle }}
+            "https://instagram.com/{{ instagram_handle }}",
+            {{ /if }}
+            {{ if pinterest_handle }}
+            "https://pinterest.com/{{ pinterest_handle }}",
+            {{ /if }}
+            {{ if github_handle }}
+            "https://github.com/{{ github_handle }}",
+            {{ /if }}
+            {{ if vimeo_handle }}
+            "https://vimeo.com/{{ vimeo_handle }}",
+            {{ /if }}
+            ""
+        ],
+        {{ if entity_brand }}
+        "image": {
+            "@type": "ImageObject",
+            "url": "{{ path src=entity_brand }}"
+        },
+        {{ /if }}
+        {{ if entity_telephone }}
+        "telephone": "{{ entity_telephone }}",
+        {{ /if }}
+        {{ if entity_email }}
+        "email": "{{ entity_email }}",
+        {{ /if }}
+        {{ if entity_street_address }}
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ entity_street_address }}",
+            "addressLocality": "{{ entity_locality }}",
+            "addressRegion": "{{ entity_region }}",
+            "postalCode": "{{ entity_postal_code }}",
+            "addressCountry": "{{ entity_country }}"
+        },
+        {{ /if }}
+        {{ if entity_brand }}
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ path src=entity_brand }}"
+        },
+        {{ /if }}
+        "location": {
+            "@type": "Place",
+            "name": "{{ entity_name }}",
+            "description": "{{ entity_description }}",
+            "hasMap": "http://maps.google.com/maps?q={{ entity_name | urlencode }}%2C+{{ entity_street_address | urlencode }}%2C+{{ entity_locality }}%2C+{{ entity_region }}+{{ entity_postal_code }}%2C+{{ entity_country }}",
+            {{ if entity_telephone }}
+            "telephone": "{{ entity_telephone }}",
+            {{ /if }}
+            {{ if entity_brand }}
+            "image": {
+                "@type": "ImageObject",
+                "url": "{{ path src=entity_brand }}"
+            },
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ path src=entity_brand }}"
+            },
+            {{ /if }}
+            {{ if entity_url }}
+            "url": "{{ entity_url }}",
+            {{ /if }}
+            "sameAs": [
+                {{ if twitter_handle }}
+                "https://twitter.com/{{ twitter_handle }}",
+                {{ /if }}
+                {{ if facebook_handle }}
+                "https://facebook.com/{{ facebook_handle }}",
+                {{ /if }}
+                {{ if facebook_profile_id }}
+                "https://facebook.com/{{ facebook_profile_id }}",
+                {{ /if }}
+                {{ if wikipedia_url }}
+                "{{ wikipedia_url }}",
+                {{ /if }}
+                {{ if linkedin_handle }}
+                "https://linkedin.com/in/{{ linkedin_handle }}",
+                {{ /if }}
+                {{ if googleplus_handle }}
+                "https://plus.google.com/{{ googleplus_handle }}",
+                {{ /if }}
+                {{ if youtube_user_handle }}
+                "https://youtube.com/{{ youtube_user_handle }}",
+                {{ /if }}
+                {{ if youtube_channel_handle }}
+                "https://youtube.com/{{ youtube_channel_handle }}",
+                {{ /if }}
+                {{ if instagram_handle }}
+                "https://instagram.com/{{ instagram_handle }}",
+                {{ /if }}
+                {{ if pinterest_handle }}
+                "https://pinterest.com/{{ pinterest_handle }}",
+                {{ /if }}
+                {{ if github_handle }}
+                "https://github.com/{{ github_handle }}",
+                {{ /if }}
+                {{ if vimeo_handle }}
+                "https://vimeo.com/{{ vimeo_handle }}",
+                {{ /if }}
+                ""
+            ],
+            {{ if entity_latitude and entity_longitude }}
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "{{ entity_latitude }}",
+                "longitude": "{{ entity_longitude }}"
+            },
+            {{ /if }}
+            {{ if entity_street_address }}
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "{{ entity_street_address }}",
+                "addressLocality": "{{ entity_locality }}",
+                "addressRegion": "{{ entity_region }}",
+                "postalCode": "{{ entity_postal_code }}",
+                "addressCountry": "{{ entity_country }}"
+            }
+            {{ /if }}
+        }
+    },
+    {{ if site_creator_entity_type }}
+    "creator": {
+        "@type": "{{ site_creator_entity_type }}",
+        {{ if site_creator_entity_name }}
+        "name": "{{ site_creator_entity_name }}",
+        {{ /if }}
+        {{ if site_creator_alternate_entity_name }}
+        "alternateName": "{{ site_creator_alternate_entity_name }}",
+        {{ /if }}
+        {{ if site_creator_entity_description }}
+        "description": "{{ site_creator_entity_description }}",
+        {{ /if }}
+        {{ if site_creator_entity_url }}
+        "url": "{{ site_creator_entity_url }}",
+        {{ /if }}
+        {{ if site_creator_entity_telephone }}
+        "telephone": "{{ site_creator_entity_telephone }}",
+        {{ /if }}
+        {{ if site_creator_entity_email }}
+        "email": "{{ site_creator_entity_email }}",
+        {{ /if }}
+        {{ if site_creator_entity_brand }}
+        "image": {
+            "@type": "ImageObject",
+            "url": "{{ path src=site_creator_entity_brand }}",
+        },
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ path src=site_creator_entity_brand }}",
+        },
+        {{ /if }}
+        {{ if site_creator_entity_latitude and site_creator_entity_longitude }}
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "{{ site_creator_entity_latitude }}",
+            "longitude": "{{ site_creator_entity_longitude }}"
+        },
+        {{ /if }}
+        {{ if site_creator_entity_street_address }}
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ site_creator_entity_street_address }}",
+            "addressLocality": "{{ site_creator_entity_locality }}",
+            "addressRegion": "{{ site_creator_entity_region }}",
+            "postalCode": "{{ site_creator_entity_postal_code }}",
+            "addressCountry": "{{ site_creator_entity_country }}"
+        }
+        {{ /if }}
+    }
+    {{ /if }}
+}
+</script>
+
+<!-- Place -->
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Place",
+    "name": "{{ entity_name }}",
+    "description": "{{ entity_description }}",
+    "hasMap": "http://maps.google.com/maps?q={{ entity_name | urlencode }}%2C+{{ entity_street_address | urlencode }}%2C+{{ entity_locality | urlencode }}%2C+{{ entity_region | urlencode }}+{{ entity_postal_code | urlencode }}%2C+{{ entity_country | urlencode }}",
+    {{ if entity_telephone }}
+    "telephone": "{{ entity_telephone }}",
+    {{ /if }}
+    {{ if entity_brand }}
+    "image": {
+        "@type": "ImageObject",
+        "url": "{{ path src=entity_brand }}"
+    },
+    "logo": {
+        "@type": "ImageObject",
+        "url": "{{ path src=entity_brand }}",
+    },
+    {{ /if }}
+    {{ if entity_url }}
+    "url": "{{ entity_url }}",
+    {{ /if }}
+    "sameAs": [
+        {{ if twitter_handle }}
+        "https://twitter.com/{{ twitter_handle }}",
+        {{ /if }}
+        {{ if facebook_handle }}
+        "https://facebook.com/{{ facebook_handle }}",
+        {{ /if }}
+        {{ if facebook_profile_id }}
+        "https://facebook.com/{{ facebook_profile_id }}",
+        {{ /if }}
+        {{ if wikipedia_url }}
+        "{{ wikipedia_url }}",
+        {{ /if }}
+        {{ if linkedin_handle }}
+        "https://linkedin.com/in/{{ linkedin_handle }}",
+        {{ /if }}
+        {{ if googleplus_handle }}
+        "https://plus.google.com/{{ googleplus_handle }}",
+        {{ /if }}
+        {{ if youtube_user_handle }}
+        "https://youtube.com/{{ youtube_user_handle }}",
+        {{ /if }}
+        {{ if youtube_channel_handle }}
+        "https://youtube.com/{{ youtube_channel_handle }}",
+        {{ /if }}
+        {{ if instagram_handle }}
+        "https://instagram.com/{{ instagram_handle }}",
+        {{ /if }}
+        {{ if pinterest_handle }}
+        "https://pinterest.com/{{ pinterest_handle }}",
+        {{ /if }}
+        {{ if github_handle }}
+        "https://github.com/{{ github_handle }}",
+        {{ /if }}
+        {{ if vimeo_handle }}
+        "https://vimeo.com/{{ vimeo_handle }}",
+        {{ /if }}
+        ""
+    ],
+    {{ if entity_latitude and entity_longitude }}
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "{{ entity_latitude }}",
+        "longitude": "{{ entity_longitude }}"
+    },
+    {{ /if }}
+    {{ if entity_street_address }}
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ entity_street_address }}",
+        "addressLocality": "{{ entity_locality }}",
+        "addressRegion": "{{ entity_region }}",
+        "postalCode": "{{ entity_postal_code }}",
+        "addressCountry": "{{ entity_country }}"
+    }
+    {{ /if }}
+}
+</script>
+{{ /if }}
+
+<!-- END Meta -->

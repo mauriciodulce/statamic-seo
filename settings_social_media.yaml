@@ -1,0 +1,41 @@
+fields:
+  twitter_handle:
+    type: text
+    instructions: Your Twitter Handle, without the preceding @ This must be set for Twitter Card tags to be generated.
+  facebook_handle:
+    type: text
+    instructions: Your Facebook company/fan page handle (the part after https://www.facebook.com/)
+  facebook_profile_id:
+    type: text
+    instructions: Your Facebook Profile/Page ID. Click on the 'About' tab on your Facebook company/fan page, click on 'Page Info', then scroll to the bottom to find your 'Facebook Page ID'
+  facebook_app_id:
+    type: text
+    instructions: Your Facebook App ID. Providing a Facebook Application ID for use with the Social Media Sharing feature is recommended, but optional. [Learn More](https://developers.facebook.com/docs/apps/register)
+  wikipedia_url:
+    type: text
+    validate: url
+    instructions: The full URL to the Wikipedia.com entry that is about this entity. [Learn More](http://searchengineland.com/leveraging-wikidata-gain-google-knowledge-graph-result-219706)
+  linkedin_handle:
+    type: text
+    instructions: Your LinkedIn page handle (the part after https://www.linkedin.com/in/ or https://www.linkedin.com/company/)
+  googleplus_handle:
+    type: text
+    instructions: Your Google+ page handle, without the preceding +. If you have a numeric Google+ account still, just enter that.
+  youtube_user_handle:
+    type: text
+    instructions: Your YouTube user handle (the part after https://www.youtube.com/user/)
+  youtube_channel_handle:
+    type: text
+    instructions: Your YouTube channel handle (the part after https://www.youtube.com/c/)
+  instagram_handle:
+    type: text
+    instructions: Your Instagram handle
+  pinterest_handle:
+    type: text
+    instructions: Your Pinterest page handle (the part after https://www.pinterest.com/)
+  github_handle:
+    type: text
+    instructions: Your Github page handle (the part after https://github.com/)
+  vimeo_handle:
+    type: text
+    instructions: Your Vimeo page handle (the part after https://vimeo.com/)

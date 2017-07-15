@@ -1,0 +1,84 @@
+fields:
+  site_creator_entity_type:
+    type: select
+    instructions: The type of entity that created this website.
+    options:
+      Corporation: Corporation
+      LocalBusiness: Local Business
+      Organization: Organization
+      Person: Person
+    validate: required
+  general_info:
+    type: section
+  site_creator_entity_name:
+    type: text
+    display: Entity name
+    instructions: The name of the entity that created the website
+    validate: required
+  site_creator_alternate_entity_name:
+    type: text
+    display: Alternate Entity Name
+    instructions: An alternate or nickname for the entity that created the website
+  site_creator_entity_description:
+    display: Entity Description
+    instructions: A description of the entity that created the website
+    type: textarea
+    rows: 2
+  site_creator_entity_url:
+    display: Entity URL
+    instructions: A URL for the entity that created the website
+    type: text
+    validate: url
+  site_creator_entity_brand:
+    display: Entity Brand
+    type: assets
+    instructions: An image or logo that represents the entity that created the website. The image must be in JPG, PNG, or GIF format.
+    container: images
+    max_files: 1
+  site_creator_entity_telephone:
+    display: Entity Telephone
+    instructions: The primary contact telephone number for the entity that created the website
+    type: text
+  site_creator_entity_email:
+    display: Entity Email
+    type: text
+    validate: email
+    instructions: The primary contact email address for the entity that created the website
+  location_info:
+    type: section
+  site_creator_entity_street_address:
+    display: Entity Street Address
+    instructions: The street address of the entity that owns the website, e.g. 123 Main Street
+    type: text
+  site_creator_entity_locality:
+    display: Entity Locality
+    instructions: The locality of the entity that owns the website, e.g. Portchester
+    type: text
+    width: 50
+  site_creator_entity_region:
+    display: Entity Region
+    instructions: The region of the entity that owns the website, e.g. New York or NY
+    type: text
+    width: 50
+  site_creator_entity_postal_code:
+    display: Entity Postal Code
+    instructions: The postal code of the entity that owns the website, e.g. 14580
+    type: text
+    width: 50
+  site_creator_entity_country:
+    display: Entity Country
+    instructions: The country in which the entity that owns the website is located, e.g. US
+    type: text
+    width: 50
+  site_creator_entity_latitude:
+    display: Entity Latitude
+    instructions: The latitude of the location of the entity that owns the website, e.g. -120.5436367
+    type: text
+    width: 50
+  site_creator_entity_longitude:
+    display: Entity Longitude
+    instructions: The longitude of the location of the entity that owns the website, e.g. 80.6033588
+    type: text
+    width: 50
+
+
