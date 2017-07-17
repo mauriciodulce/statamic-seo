@@ -1,5 +1,5 @@
 {
-    "name": "marbles/statamic-seo",
+    "name": "mauriciodulce/statamic-seo",
     "description": "A full featured SEO Suite for Statamic",
     "license": "MIT",
     "require": {
